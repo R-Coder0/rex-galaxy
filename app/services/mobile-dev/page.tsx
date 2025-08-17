@@ -42,21 +42,12 @@ type StackKey = typeof tabs[number]["key"];
 
 type Item = { name: string; logo: string };
 
-type Props = {
-  title?: string;
-  description?: string;
-  techStack?: {
-    languages: Item[];
-    databases: Item[];
-    frameworks: Item[];
-  };
-};
 
-export default function MobileAppDevelopment({
-  title = "Our Tech Stack",
-  description = "Our tech stack for Mobile App development encompasses the latest technologies...",
-  techStack = DEFAULT_STACK,
-}: Props) {
+export default function MobileAppDevelopment(){
+  const title = "Our Tech Stack"
+  const description = "Our tech stack for Mobile App development encompasses the latest technologies..."
+  const techStack = DEFAULT_STACK
+  
   const [active, setActive] = useState<StackKey>("languages");
   const items: Item[] = techStack[active];
   const [currentIndex, setCurrentIndex] = useState(0);

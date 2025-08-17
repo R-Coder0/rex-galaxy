@@ -39,21 +39,11 @@ type StackKey = typeof tabs[number]["key"];
 
 type Item = { name: string; logo: string };
 
-type Props = {
-  title?: string;
-  description?: string;
-  techStack?: {
-    design: Item[];
-    research: Item[];
-    prototyping: Item[];
-  };
-};
+export default function UIDesignService(){
+  const title = "Our UI/UX Design Stack"
+  const description = "Our comprehensive toolkit for creating exceptional user experiences..."
+  const techStack = DEFAULT_STACK
 
-export default function UIDesignService({
-  title = "Our UI/UX Design Stack",
-  description = "Our comprehensive toolkit for creating exceptional user experiences...",
-  techStack = DEFAULT_STACK,
-}: Props) {
   const [active, setActive] = useState<StackKey>("design");
   const items: Item[] = techStack[active];
   const [currentIndex, setCurrentIndex] = useState(0);
