@@ -41,21 +41,21 @@ type StackKey = typeof tabs[number]["key"];
 
 type Item = { name: string; logo: string };
 
-type Props = {
-  title?: string;
-  description?: string;
-  techStack?: {
-    platforms: Item[];
-    approaches: Item[];
-    technologies: Item[];
-  };
-};
+// type Props = {
+//   title?: string;
+//   description?: string;
+//   techStack?: {
+//     platforms: Item[];
+//     approaches: Item[];
+//     technologies: Item[];
+//   };
+// };
 
-export default function ApplicationModernization({
-  title = "Our Modernization Stack",
-  description = "Our technology stack for application modernization encompasses the latest platforms and approaches...",
-  techStack = DEFAULT_STACK,
-}: Props) {
+export default function ApplicationModernization(){
+  const title = "Our Modernization Stack"
+  const description = "Our technology stack for application modernization encompasses the latest platforms and approaches..."
+  const techStack = DEFAULT_STACK
+
   const [active, setActive] = useState<StackKey>("platforms");
   const items: Item[] = techStack[active];
   const [currentIndex, setCurrentIndex] = useState(0);
