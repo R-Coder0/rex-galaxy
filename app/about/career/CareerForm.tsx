@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
 
 export default function CareerForm() {
   const [loading, setLoading] = useState(false);
