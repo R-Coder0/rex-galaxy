@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Handshake, Heart, Target, Users, Lightbulb, Rocket, Star, ArrowRight } from "lucide-react";
+import { Sparkles, Handshake, Heart, Target, Users, Lightbulb, Rocket, Star} from "lucide-react";
+import Link from "next/link";
 
 // Color tokens sampled to match your theme (navy + orange accent)
 const colors = {
@@ -111,19 +112,20 @@ export default function CulturePage() {
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 {/* Primary button */}
-                <button
+                <Link
                   className="rounded-2xl px-6 py-5 text-base font-medium shadow-lg transition hover:opacity-90"
                   style={{ background: colors.accent, color: "#0b0b0b" }}
+                  href="/about/career"
                 >
                   Join Our Team
-                </button>
+                </Link>
                 {/* Outline button */}
-                <button
+                {/* <button
                   className="rounded-2xl border px-6 py-5 text-base font-medium transition hover:bg-white/5"
                   style={{ borderColor: colors.ring, color: "#ffffff80" }}
                 >
                   Meet the People <ArrowRight className="ml-2 inline-block h-4 w-4" />
-                </button>
+                </button> */}
               </div>
             </motion.div>
           </div>
@@ -298,20 +300,20 @@ export default function CulturePage() {
                 If this sounds like a place you’d thrive, we’d love to meet you. Explore open roles or just say hello.
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a
+                {/* <a
                   href="/careers"
                   className="rounded-2xl px-6 py-5 text-base font-medium shadow-lg transition hover:opacity-90"
                   style={{ background: colors.accent, color: "#0b0b0b" }}
                 >
                   See Open Roles
-                </a>
-                <a
+                </a> */}
+                <Link
                   href="/contact"
                   className="rounded-2xl border px-6 py-5 text-base font-medium transition hover:bg-white/5"
                   style={{ borderColor: colors.ring, color: "#ffffff80" }}
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

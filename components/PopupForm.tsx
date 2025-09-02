@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { X } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 type Props = {
   isOpen: boolean;
@@ -11,6 +13,8 @@ type Props = {
 
 export default function ElegantFormPopup({ isOpen, onClose }: Props) {
   const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState<null | 'ok' | 'err'>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,11 +32,45 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
+    setSent(null);
+
     try {
-      // TODO: send to your API route
-      console.log('Form submitted:', formData);
-      onClose();
+      const serviceId  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
+      const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('Missing EmailJS env vars');
+        throw new Error('Email service not configured');
+      }
+
+      // Params MUST match your EmailJS template variable names
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: formData.service,
+        message: formData.message,
+        title: 'Website Enquiry',
+        time: new Date().toLocaleString(),
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+
+      setSent('ok');
+      // optional reset
+      setFormData({ name: '', email: '', phone: '', company: '', message: '', service: '' });
+
+      // auto-close after a short delay
+      setTimeout(() => {
+        onClose();
+        setSent(null);
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+      setSent('err');
     } finally {
       setLoading(false);
     }
@@ -43,22 +81,23 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(17,24,39,.65),rgba(2,6,23,.9))] backdrop-blur-md"
-        onClick={onClose}
+        onClick={() => !loading && onClose()}
       />
 
       {/* Dialog */}
       <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950/90 shadow-2xl ring-1 ring-black/40">
         {/* Close */}
         <button
-          onClick={onClose}
-          className="absolute right-3 top-3 rounded-full bg-white/10 p-2 text-slate-200 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          onClick={() => !loading && onClose()}
+          className="absolute right-3 top-3 rounded-full bg-white/10 p-2 text-slate-200 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
           aria-label="Close"
+          disabled={loading}
         >
           <X className="h-5 w-5" />
         </button>
 
         <div className="flex max-h-[90vh] overflow-hidden flex-col md:flex-row">
-          {/* Image side stays fixed; fills column height */}
+          {/* Image side */}
           <div className="relative hidden w-full md:block md:w-5/12">
             <Image
               src="/formImage.webp"
@@ -76,7 +115,6 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
           {/* Form side */}
           <div className="w-full md:w-7/12">
             <div className="max-h-[90vh] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
-              {/* header + form ... */}
               <header className="mb-6">
                 <p className="text-xs uppercase tracking-wider text-slate-400">Get in touch</p>
                 <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -133,11 +171,11 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
                     className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-2.5 text-slate-100 placeholder-slate-500 shadow-inner shadow-black/20 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/40"
                   >
                     <option value="">Select a service</option>
-                    <option value="software-development">Software Development</option>
-                    <option value="mobile-app-development">Mobile App Development</option>
-                    <option value="application-modernization">Application Modernization</option>
-                    <option value="cloud-services">Cloud Services</option>
-                    <option value="ui-ux-design">UI/UX Design</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="Application Modernization">Application Modernization</option>
+                    <option value="Cloud Services">Cloud Services</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
                   </select>
                 </div>
 
@@ -183,6 +221,16 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
                   <span className="absolute inset-0 -translate-x-full bg-white/20 transition group-hover:translate-x-0" />
                 </button>
 
+                {/* status */}
+                {sent === 'ok' && (
+                  <p className="text-center text-sm text-green-400">Thanks! We’ve received your request.</p>
+                )}
+                {sent === 'err' && (
+                  <p className="text-center text-sm text-rose-400">
+                    Couldn’t send the message. Please try again in a moment.
+                  </p>
+                )}
+
                 {/* trust row */}
                 <div className="mt-2 flex items-center justify-center gap-3 text-xs text-slate-400">
                   <span className="inline-flex items-center gap-1">
@@ -223,7 +271,6 @@ function FormField({
   id: string;
   type: string;
   value: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: (e: any) => void;
 }) {
   return (

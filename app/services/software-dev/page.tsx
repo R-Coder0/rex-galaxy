@@ -11,7 +11,7 @@ const DEFAULT_STACK = {
   languages: [
     { name: ".NET", logo: "/tech-icons/dotnet.svg" },
     { name: "C#", logo: "/tech-icons/csharp.svg" },
-    { name: "Go", logo: "/tech-icons/go.svg" },
+    { name: "Go", logo: "/tech-icons/golang.svg" },
     { name: "Java", logo: "/tech-icons/java.svg" },
     { name: "JavaScript", logo: "/tech-icons/js.svg" },
     { name: "PHP", logo: "/tech-icons/php.svg" },

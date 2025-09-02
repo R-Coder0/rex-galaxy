@@ -102,6 +102,7 @@ const RexGalaxyMobileNavbar: React.FC = () => {
       dropdown: [
         { label: 'About Us', href: '/about/company-overview' },
         { label: 'Company Culture', href: '/about/company-culture' },
+        { label: 'Career', href: '/about/career' },
       ]
     },
     {
@@ -115,7 +116,7 @@ const RexGalaxyMobileNavbar: React.FC = () => {
   ];
 
   return (
-    <div className="lg:hidden">
+    <div className="md:hidden">
       {/* Mobile Header */}
       <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 shadow-2xl sticky top-0 z-[900] border-b border-slate-600">
         <div className="flex justify-between items-center h-20 px-4">

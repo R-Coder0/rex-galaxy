@@ -86,6 +86,7 @@ const RexGalaxyNavbar: React.FC = () => {
         { label: 'About Us', href: '/about/company-overview' },
         // { label: 'Our Team', href: '/team' },
         { label: 'Company Culture', href: '/about/company-culture' },
+        { label: 'Career', href: '/about/career' },
         // { label: 'Testimonials', href: '/testimonials' },
       ]
     },
@@ -126,7 +127,7 @@ const RexGalaxyNavbar: React.FC = () => {
 
             {/* Desktop Navigation */}
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item, index) => (
                 <div
                   key={`${item.label}-${index}`}
