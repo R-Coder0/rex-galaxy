@@ -149,7 +149,7 @@ export default function MobileAppDevelopment(){
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
                 <Image
-                  src="/services/mobile-app-dev.png"
+                  src="/Mobile-app copy.tiff"
                   alt="Developers working on mobile apps"
                   fill
                   className="object-contain"

@@ -55,7 +55,7 @@ const RexGalaxyNavbar: React.FC = () => {
             { label: 'Software Development', href: '/services/software-dev' },
             { label: 'Mobile App Development', href: '/services/mobile-dev' },
             { label: 'Application Modernization', href: '/services/app-modernization' },
-            { label: 'Hire Dedicated Developers', href: '/services/hire-developers' },
+            // { label: 'Hire Dedicated Developers', href: '/services/hire-developers' },
             { label: 'UI/UX Services', href: '/services/ui-ux' },
             { label: 'SaaS Development', href: '/services/saas-dev' },
           ]
@@ -120,7 +120,7 @@ const RexGalaxyNavbar: React.FC = () => {
                 <img
                   src="/logo.png"
                   alt="RexGalaxy Logo"
-                  className="h-12 w-auto"
+                  className="h-16 w-auto"
                 />
               </button>
             </div>

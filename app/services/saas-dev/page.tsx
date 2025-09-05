@@ -10,7 +10,7 @@ import ElegantFormPopup from '@/components/PopupForm';
 const DEFAULT_STACK = {
   frontend: [
     { name: "React", logo: "/tech-icons/react.svg" },
-    { name: "Next.js", logo: "/tech-icons/nextjs.svg" },
+    { name: "Next.js", logo: "/tech-icons/next.svg" },
     { name: "Vue", logo: "/tech-icons/vue.svg" },
     { name: "Angular", logo: "/tech-icons/angular.svg" },
     { name: "TypeScript", logo: "/tech-icons/typescript.svg" },
@@ -142,7 +142,7 @@ export default function SaaSDevelopmentService() {
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
                 <Image
-                  src="/services/saas-development.png"
+                  src="/saas.png"
                   alt="SaaS development process"
                   fill
                   className="object-contain"

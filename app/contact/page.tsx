@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle} from 'lucide-react';
+import Link from 'next/link';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -59,8 +60,8 @@ const ContactPage = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Call Us',
-      content: '+1 (555) 123-4567',
-      subContent: '+1 (555) 987-6543'
+      content: '+91 74112 11148',
+      subContent: '+91 74112 11148'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -141,9 +142,9 @@ const ContactPage = () => {
                   {/* <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-300">
                     Contact Us
                   </button> */}
-                  <button className="px-6 py-3 border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-slate-900 font-semibold rounded-lg transition-all duration-300">
+                  <Link href="/about/company-overview" className="px-6 py-3 border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-slate-900 font-semibold rounded-lg transition-all duration-300">
                     Know More About Us
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

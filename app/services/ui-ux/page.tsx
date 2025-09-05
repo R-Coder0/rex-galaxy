@@ -144,7 +144,7 @@ export default function UIDesignService(){
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
                 <Image
-                  src="/services/ui-ux-design.png"
+                  src="/ui-ux.webp"
                   alt="UI/UX design process"
                   fill
                   className="object-contain"

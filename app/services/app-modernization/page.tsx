@@ -156,7 +156,7 @@ export default function ApplicationModernization(){
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
                 <Image
-                  src="/services/app-modernization.png"
+                  src="/app-modernization.png"
                   alt="Application modernization process"
                   fill
                   className="object-contain"

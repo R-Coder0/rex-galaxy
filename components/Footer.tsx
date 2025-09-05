@@ -1,126 +1,216 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { BsTwitterX, BsYoutube } from "react-icons/bs";
+
+// --------- Company details (edit yaha) ----------
+const COMPANY = {
+  name: "RexGalaxy Technologies",
+  email: "rexgalaxytechnology@gmail.com",
+  phone: "+91 74112 11148", // update
+  addr1: "A 40, Ithum Tower A, 6th Floor, 606",
+  addr2: "Noida, Uttar Pradesh 201301 India",
+  // regNo: "Registration No.: 136527", // "" to hide
+  // cinNo: "CIN: U72200UP2020PTC136527", // "" to hide
+};
+
+// Certifications strip data (local images inside /public/certifications)
+const CERTS = [
+  { src: "/certifications/mahakumbh.png", label: "Startup India Certified" },
+  { src: "/certifications/msme.png", label: "MSME Registered" },
+  { src: "/certifications/digital.png", label: "Digital India Initiative" },
+  { src: "/certifications/Djgjtal.png", label: "Startup Mahakumbh Partner" },
+  { src: "/certifications/sti.png", label: "Invest India Recognized" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Software Solutions */}
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* ================= TOP: 5-COLUMN GRID ================= */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+          {/* 1) BRAND / CONTACT / ADDRESS */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo.png" // <- put your logo at public/logo.svg
+                alt={`${COMPANY.name} logo`}
+                width={150}
+                height={150}
+                priority
+              />
+            </div>
+
+            <p className="text-sm text-gray-400 mb-5">
+              We engineer reliable software, web, and mobile solutions that help you
+              launch faster and scale with confidence.
+            </p>
+
+            <div className="space-y-2 text-sm">
+              <div>
+                <span className="text-gray-500">Email:</span>{" "}
+                <Link href={`mailto:${COMPANY.email}`} className="hover:text-orange-400">
+                  {COMPANY.email}
+                </Link>
+              </div>
+              <div>
+                <span className="text-gray-500">Phone:</span>{" "}
+                <Link href={`tel:${COMPANY.phone}`} className="hover:text-orange-400">
+                  {COMPANY.phone}
+                </Link>
+              </div>
+              <div className="mt-2">
+                <div className="text-gray-500">Address:</div>
+                <div>{COMPANY.addr1}</div>
+                <div>{COMPANY.addr2}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 2) SOFTWARE SOLUTIONS */}
           <div>
             <h3 className="text-lg font-semibold text-white mb-6">Software Solutions</h3>
             <ul className="space-y-3">
-              <li><Link href="/services/software-dev" className="hover:text-orange-400 transition-colors">Software Development</Link></li>
-              <li><Link href="/services/mobile-dev" className="hover:text-orange-400 transition-colors">Mobile App Development</Link></li>
-              <li><Link href="/services/app-modernization" className="hover:text-orange-400 transition-colors">Application Modernization</Link></li>
-              <li><Link href="/services/saas-dev" className="hover:text-orange-400 transition-colors">SaaS Development</Link></li>
-              <li><Link href="/services/ui-ux" className="hover:text-orange-400 transition-colors">UI/UX Services</Link></li>
-              <li><Link href="/services/hire-developers" className="hover:text-orange-400 transition-colors">Hire Dedicated Developers</Link></li>
+              <li><Link href="/services/software-dev" className="hover:text-orange-400">Software Development</Link></li>
+              <li><Link href="/services/mobile-dev" className="hover:text-orange-400">Mobile App Development</Link></li>
+              <li><Link href="/services/app-modernization" className="hover:text-orange-400">Application Modernization</Link></li>
+              <li><Link href="/services/saas-dev" className="hover:text-orange-400">SaaS Development</Link></li>
+              <li><Link href="/services/ui-ux" className="hover:text-orange-400">UI/UX Services</Link></li>
+              <li><Link href="/services/hire-developers" className="hover:text-orange-400">Hire Dedicated Developers</Link></li>
             </ul>
           </div>
 
-          {/* Web Solutions */}
+          {/* 3) WEB SOLUTIONS */}
           <div>
             <h3 className="text-lg font-semibold text-white mb-6">Web Solutions</h3>
             <ul className="space-y-3">
-              <li><Link href="/services/web-app" className="hover:text-orange-400 transition-colors">Web App Development</Link></li>
-              <li><Link href="/services/api-integration" className="hover:text-orange-400 transition-colors">API Integration</Link></li>
-              <li><Link href="/services/cloud-consulting" className="hover:text-orange-400 transition-colors">Cloud Consulting</Link></li>
-              <li><Link href="/services/devops" className="hover:text-orange-400 transition-colors">DevOps Services</Link></li>
+              <li><Link href="/services/web-app" className="hover:text-orange-400">Web App Development</Link></li>
+              <li><Link href="/services/api-integration" className="hover:text-orange-400">API Integration</Link></li>
+              <li><Link href="/services/cloud-consulting" className="hover:text-orange-400">Cloud Consulting</Link></li>
+              <li><Link href="/services/devops" className="hover:text-orange-400">DevOps Services</Link></li>
             </ul>
           </div>
 
-          {/* Enterprise Solutions */}
+          {/* 4) ENTERPRISE SOLUTIONS */}
           <div>
             <h3 className="text-lg font-semibold text-white mb-6">Enterprise Solutions</h3>
             <ul className="space-y-3">
-              <li><Link href="/services/enterprise-software" className="hover:text-orange-400 transition-colors">Enterprise Software</Link></li>
-              <li><Link href="/services/software-outsourcing" className="hover:text-orange-400 transition-colors">Software Outsourcing</Link></li>
-              <li><Link href="/services/crm-development" className="hover:text-orange-400 transition-colors">CRM Development</Link></li>
-              <li><Link href="/services/erp-software" className="hover:text-orange-400 transition-colors">ERP Software</Link></li>
+              <li><Link href="/services/enterprise-software" className="hover:text-orange-400">Enterprise Software</Link></li>
+              <li><Link href="/services/software-outsourcing" className="hover:text-orange-400">Software Outsourcing</Link></li>
+              <li><Link href="/services/crm-development" className="hover:text-orange-400">CRM Development</Link></li>
+              <li><Link href="/services/erp-software" className="hover:text-orange-400">ERP Software</Link></li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* 5) RESOURCES + ABOUT (MERGED) */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Resources</h3>
+            <h3 className="text-lg font-semibold text-white mb-6">Resources &amp; About</h3>
             <ul className="space-y-3">
-              <li><Link href="/blog" className="hover:text-orange-400 transition-colors">Blog</Link></li>
-              <li><Link href="/case-studies" className="hover:text-orange-400 transition-colors">Case Studies</Link></li>
+              <li><Link href="/blog" className="hover:text-orange-400">Blog</Link></li>
+              <li><Link href="/case-studies" className="hover:text-orange-400">Case Studies</Link></li>
+              <li><Link href="/about/company-overview" className="hover:text-orange-400">About Us</Link></li>
+              <li><Link href="/about/company-culture" className="hover:text-orange-400">Company Culture</Link></li>
+              <li><Link href="/about/career" className="hover:text-orange-400">Career</Link></li>
+              <li><Link href="/contact" className="hover:text-orange-400">Contact Us</Link></li>
             </ul>
           </div>
+        </div>
+        {/* ================= SOCIAL ICONS ================= */}
+        <div className="flex flex-col justify-center mb-10">
+          <h4 className="text-center text-gray-400 font-medium mb-8">
+            Recognized by Government of India
+          </h4>
+          <div className="flex justify-center gap-6 text-2xl">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-black transition-colors duration-300"
+            >
+              <BsTwitterX />
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-red-600 transition-colors duration-300"
+            >
+              <BsYoutube />
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-pink-600 transition-colors duration-300"
+            >
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
 
-          {/* About */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-6">About</h3>
-            <ul className="space-y-3">
-              <li><Link href="/about/company-overview" className="hover:text-orange-400 transition-colors">About Us</Link></li>
-              <li><Link href="/about/company-culture" className="hover:text-orange-400 transition-colors">Company Culture</Link></li>
-              <li><Link href="/about/career" className="hover:text-orange-400 transition-colors">Career</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-400 transition-colors">Contact Us</Link></li>
+        {/* ================= GOVT RECOGNITION STRIP ================= */}
+        <div className="border-t border-gray-700 pt-10">
+          <h4 className="text-center text-gray-400 font-medium mb-8">
+            Recognized by Government of India
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+            {CERTS.map((c) => (
+              <div key={c.label} className="flex flex-col items-center text-center bg-white p-4 rounded-lg">s
+                <div className="relative w-44 h-14">
+                  <Image
+                    src={c.src}
+                    alt={c.label}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="mt-2 text-sm text-gray-400">{c.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ================= LEGAL LINKS + COPYRIGHT ================= */}
+        <div className="border-t border-gray-700 mt-10 pt-6">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div className="space-y-1 text-sm text-gray-400">
+              <div>© {new Date().getFullYear()} All rights are reserved by {COMPANY.name}</div>
+              {/* <div className="flex flex-wrap gap-x-6">
+                {COMPANY.regNo && <span>{COMPANY.regNo}</span>}
+                {COMPANY.cinNo && <span>{COMPANY.cinNo}</span>}
+              </div> */}
+            </div>
+
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+              <li><Link href="/legal/privacy-policy" className="hover:text-orange-400">Privacy Policy</Link></li>
+              <li><Link href="/legal/terms" className="hover:text-orange-400">Terms of Use</Link></li>
+              <li><Link href="/legal/sales-policy" className="hover:text-orange-400">Sales Policy</Link></li>
+              <li><Link href="/legal" className="hover:text-orange-400">Legal</Link></li>
+              <li><Link href="/sitemap" className="hover:text-orange-400">Site Map</Link></li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-700 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
-            {/* Left Side - Social Links */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Follow us</h4>
-              <div className="flex space-x-4 mb-6">
-                {/* Twitter */}
-                <Link href="/" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors" aria-label="Twitter">
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                  </svg>
-                </Link>
-                {/* X */}
-                <Link href="/" className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors" aria-label="X">
-                  <span className="text-white font-bold text-sm">X</span>
-                </Link>
-                {/* LinkedIn */}
-                <Link href="/" className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors" aria-label="LinkedIn">
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </Link>
-                {/* Instagram */}
-                <Link
-                  href="/"
-                  className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-pink-600 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </Link>
-              </div>
-              {/* Removed random SITEMAP since no route specified in navbar */}
-            </div>
-
-            {/* Right Side - Newsletter */}
-            <div className="w-full lg:w-auto">
-              <h4 className="text-white font-semibold mb-4">Subscribe Newsletter</h4>
-              <div className="flex flex-col sm:flex-row gap-2 max-w-md">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                />
-                <button className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap">
-                  Subscribe Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center mt-8 pt-8 border-t border-gray-700">
-          <p className="text-gray-400 text-sm">© 2025 REXGALAXY TECHNOLOGIES. ALL RIGHTS RESERVED.</p>
+        {/* ================= DISCLAIMER ================= */}
+        <div className="border-t border-gray-700 mt-8 pt-8">
+          <p className="text-sm text-gray-400 leading-relaxed">
+            <span className="font-semibold text-gray-300">Disclaimer:</span>{" "}
+            The information provided on this website is for general informational purposes only.
+            While we strive to keep the information up to date and accurate, we make no
+            representations or warranties of any kind, express or implied, about the completeness,
+            accuracy, reliability, suitability, or availability with respect to the website or the
+            information, products, services, or related graphics contained on the website for any
+            purpose. Any reliance you place on such information is therefore strictly at your own risk.
+          </p>
+          <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+            Through this website, you may be able to link to other websites which are not under the
+            control of {COMPANY.name}. We have no control over the nature, content, and availability
+            of those sites. The inclusion of any links does not necessarily imply a recommendation or
+            endorse the views expressed within them.
+          </p>
         </div>
       </div>
     </footer>
