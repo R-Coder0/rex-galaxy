@@ -1,93 +1,51 @@
 "use client";
 
-import { useState } from "react";
-import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function CareerForm() {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    role: "",
-    linkedin: "",
-    source: "",
-    message: "",
-    resume: null as File | null,
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((s) => ({ ...s, [name]: value }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((s) => ({
-      ...s,
-      resume: e.target.files ? e.target.files[0] : null,
-    }));
-  };
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formRef.current) return;
     setLoading(true);
 
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      role: formData.role,
-      linkedin: formData.linkedin,
-      source: formData.source,
-      message: formData.message,
-    } as const;
-
     try {
-      // Send main fields
+      // Extract form data to avoid sending large files directly
+      const formData = new FormData(formRef.current);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        role: formData.get('role'),
+        linkedin: formData.get('linkedin'),
+        source: formData.get('source'),
+        message: formData.get('message'),
+        resume: (() => {
+          const resumeEntry = formData.get('resume');
+          return resumeEntry instanceof File && resumeEntry.name
+            ? resumeEntry.name
+            : 'No file attached';
+        })()
+      };
+
+      // Send data instead of form to avoid 413 error
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+        process.env.NEXT_PUBLIC_CAREER_TEMPLATE_ID as string,
+        data,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string,
+        }
       );
 
-      // Optional: attach resume if your EmailJS template supports base64 attachments
-      if (formData.resume) {
-        const reader = new FileReader();
-        reader.onload = async () => {
-          const base64 = (reader.result as string).split(",")[1];
-          await emailjs.send(
-            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-            {
-              ...templateParams,
-              attachment: base64,
-              filename: formData.resume?.name,
-            },
-            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
-          );
-        };
-        reader.readAsDataURL(formData.resume);
-      }
-
-      alert("Application sent. We’ll be in touch.");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        role: "",
-        linkedin: "",
-        source: "",
-        message: "",
-        resume: null,
-      });
-      (document.getElementById("career-form") as HTMLFormElement)?.reset();
+      alert("Application sent. We'll be in touch.");
+      formRef.current.reset();
     } catch (err) {
-      alert(
-        "Failed to send. Please try again or email careers@rexgalaxy.com."
-      );
+      console.error(err);
+      alert("Failed to send. Please try again or email careers@rexgalaxy.com.");
     } finally {
       setLoading(false);
     }
@@ -95,16 +53,19 @@ export default function CareerForm() {
 
   return (
     <form
+      ref={formRef}
       id="career-form"
       onSubmit={handleSubmit}
       className="grid gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
     >
+      {/* Honey-pot spam trap (users इसे नहीं भरेंगे) */}
+      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+
       <div className="grid gap-4 md:grid-cols-3">
         <input
           name="name"
           placeholder="Name"
           required
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
         <input
@@ -112,13 +73,11 @@ export default function CareerForm() {
           name="email"
           placeholder="Email"
           required
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
         <input
           name="phone"
           placeholder="Phone"
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
       </div>
@@ -127,19 +86,16 @@ export default function CareerForm() {
         <input
           name="role"
           placeholder="Role"
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
         <input
           name="linkedin"
           placeholder="LinkedIn Profile"
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
         <input
           name="source"
           placeholder="How did you find out about us?"
-          onChange={handleChange}
           className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
         />
       </div>
@@ -148,7 +104,6 @@ export default function CareerForm() {
         name="message"
         placeholder="Your Message Here"
         rows={5}
-        onChange={handleChange}
         className="rounded-lg border border-white/20 bg-transparent p-3 outline-none placeholder:text-white/40"
       />
 
@@ -156,9 +111,13 @@ export default function CareerForm() {
         <label className="mb-2 block">Please upload your CV / Resume</label>
         <input
           type="file"
-          onChange={handleFileChange}
+          name="resume"
+          accept=".pdf,.doc,.docx"
           className="block w-full text-sm text-white/70 file:mr-4 file:rounded-lg file:border-0 file:bg-orange-500 file:px-4 file:py-2 file:font-semibold file:text-white hover:file:bg-orange-400"
         />
+        {/* <p className="mt-1 text-xs text-white/50">
+          Note: Only the filename will be sent via email. We&apos;ll contact you for the full file if needed.
+        </p> */}
       </div>
 
       <button

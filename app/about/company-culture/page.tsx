@@ -101,7 +101,7 @@ export default function CulturePage() {
                 className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm"
                 style={{ background: "rgba(255, 122, 24, 0.12)", color: colors.accent }}
               >
-                <Star className="h-4 w-4" /> Established in 2018
+                <Star className="h-4 w-4" /> Established in 2022
               </div>
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-6xl">
                 The Culture that Powers <span style={{ color: colors.accent }}>RexGalaxy</span>

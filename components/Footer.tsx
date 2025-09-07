@@ -8,11 +8,10 @@ import { BsTwitterX, BsYoutube } from "react-icons/bs";
 
 // --------- Company details (edit yaha) ----------
 const COMPANY = {
-  name: "RexGalaxy Technologies",
+  name: "RexGalaxy Technology",
   email: "rexgalaxytechnology@gmail.com",
   phone: "+91 74112 11148", // update
-  addr1: "A 40, Ithum Tower A, 6th Floor, 606",
-  addr2: "Noida, Uttar Pradesh 201301 India",
+  addr1: "A 40, Ithum Tower A, 6th Floor, 606, Noida, Uttar Pradesh 201301"
   // regNo: "Registration No.: 136527", // "" to hide
   // cinNo: "CIN: U72200UP2020PTC136527", // "" to hide
 };
@@ -65,7 +64,6 @@ const Footer = () => {
               <div className="mt-2">
                 <div className="text-gray-500">Address:</div>
                 <div>{COMPANY.addr1}</div>
-                <div>{COMPANY.addr2}</div>
               </div>
             </div>
           </div>
@@ -124,30 +122,30 @@ const Footer = () => {
             Recognized by Government of India
           </h4>
           <div className="flex justify-center gap-6 text-2xl">
-            <a
+            <Link
               href="#"
               className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
             >
               <FaFacebook />
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-400 hover:text-black transition-colors duration-300"
             >
               <BsTwitterX />
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-400 hover:text-red-600 transition-colors duration-300"
             >
               <BsYoutube />
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-400 hover:text-pink-600 transition-colors duration-300"
             >
               <FaInstagram />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -158,7 +156,7 @@ const Footer = () => {
           </h4>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {CERTS.map((c) => (
-              <div key={c.label} className="flex flex-col items-center text-center bg-white p-4 rounded-lg">s
+              <div key={c.label} className="flex flex-col items-center text-center bg-white p-4 rounded-lg">
                 <div className="relative w-44 h-14">
                   <Image
                     src={c.src}
@@ -185,7 +183,7 @@ const Footer = () => {
             </div>
 
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <li><Link href="/legal/privacy-policy" className="hover:text-orange-400">Privacy Policy</Link></li>
+              <li><Link href="/legal/privacy-policies" className="hover:text-orange-400">Privacy Policy</Link></li>
               <li><Link href="/legal/terms" className="hover:text-orange-400">Terms of Use</Link></li>
               <li><Link href="/legal/sales-policy" className="hover:text-orange-400">Sales Policy</Link></li>
               <li><Link href="/legal" className="hover:text-orange-400">Legal</Link></li>

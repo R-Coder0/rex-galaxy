@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RexGalaxy Technologies – Top IT Solutions & Software Development Services",
-  description: "RexGalaxy Technologies offers cutting-edge IT solutions, custom software development, and digital transformation services. Boost your business with our expert tech solutions today!",
+  title: "RexGalaxy Technology – Top IT Solutions & Software Development Services",
+  description: "RexGalaxy Technology offers cutting-edge IT solutions, custom software development, and digital transformation services. Boost your business with our expert tech solutions today!",
   icons: {
     icon: "/favicon.ico", // या "/favicon.png" अगर PNG में है
   },

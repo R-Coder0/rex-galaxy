@@ -147,7 +147,7 @@ export default function WebAppDevelopment(){
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
                 <Image
-                  src="/services/web-app-dev.png"
+                  src="/services/website-dev.png"
                   alt="Web application development"
                   fill
                   className="object-contain"

@@ -6,9 +6,9 @@ const WhyChooseUs = () => {
       <div className="max-w-6xl mx-auto">
         {/* Main Heading with Description */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-6">Why Choose RexGalaxy Technologies?</h1>
+          <h1 className="text-4xl font-bold mb-6">Why Choose RexGalaxy Technology?</h1>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-            With over 14+ years of experience in the software development industry, RexGalaxy Technologies is a trusted choice, backed by a proven track record of successful projects.
+            With over 14+ years of experience in the software development industry, RexGalaxy Technology is a trusted choice, backed by a proven track record of successful projects.
           </p>
         </div>
 
@@ -18,7 +18,7 @@ const WhyChooseUs = () => {
           <div className="bg-gray-800 p-8  shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-white">One-Stop Solution</h2>
             <p className="text-gray-300 text-sm leading-relaxed">
-              RexGalaxy Technologies provides a comprehensive one-stop solution, from cutting-edge software development to seamless integration and ongoing support, all under one roof, to fulfill your digital needs.
+              RexGalaxy Technology provides a comprehensive one-stop solution, from cutting-edge software development to seamless integration and ongoing support, all under one roof, to fulfill your digital needs.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
           <div className="bg-gray-800 p-8  shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-white">Kick-Off in 5 Days or Less</h2>
             <p className="text-gray-300 text-sm leading-relaxed">
-              RexGalaxy Technologies offers a swift kick-off to a project, initiating development in 5 days or less, ensuring that our client&apos;s digital aspirations become a reality at lightning speed.
+              RexGalaxy Technology offers a swift kick-off to a project, initiating development in 5 days or less, ensuring that our client&apos;s digital aspirations become a reality at lightning speed.
             </p>
           </div>
 

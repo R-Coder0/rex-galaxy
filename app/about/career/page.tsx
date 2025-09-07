@@ -41,7 +41,7 @@ export default function CareerPage() {
             Be a part of a dynamic workplace that fosters growth and innovation
           </h2>
           <p className="mb-6 text-white/70">
-            At RexGalaxy Technologies, we’re committed to doing great things by fostering a culture of innovation and growth. Our like-minded family works together towards shared goals with a spirit of determination. Join our team and experience a culture of constant growth and education, where we build futuristic products and solutions for millions of users together.
+            At RexGalaxy Technology, we’re committed to doing great things by fostering a culture of innovation and growth. Our like-minded family works together towards shared goals with a spirit of determination. Join our team and experience a culture of constant growth and education, where we build futuristic products and solutions for millions of users together.
           </p>
           <Link
             href="/about/company-culture"

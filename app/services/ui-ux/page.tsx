@@ -22,10 +22,10 @@ const DEFAULT_STACK = {
     { name: "Surveys", logo: "/tech-icons/survey.svg" },
   ],
   prototyping: [
-    { name: "Prototyping", logo: "/tech-icons/prototyping.svg" },
+    { name: "Prototyping", logo: "/tech-icons/prototyping.png" },
     { name: "Wireframing", logo: "/tech-icons/wireframe.svg" },
-    { name: "Microinteractions", logo: "/tech-icons/interaction.svg" },
-    { name: "Animation", logo: "/tech-icons/animation.svg" },
+    { name: "Microinteractions", logo: "/tech-icons/interactions.png" },
+    { name: "Animation", logo: "/tech-icons/animation.png" },
   ],
 };
 

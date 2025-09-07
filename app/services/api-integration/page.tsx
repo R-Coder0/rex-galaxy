@@ -9,22 +9,22 @@ import ElegantFormPopup from '@/components/PopupForm';
 
 const DEFAULT_STACK = {
     protocols: [
-        { name: "REST", logo: "/tech-icons/rest.svg" },
+        { name: "REST", logo: "/tech-icons/rest.png" },
         { name: "GraphQL", logo: "/tech-icons/graphql.svg" },
-        { name: "gRPC", logo: "/tech-icons/grpc.svg" },
+        { name: "gRPC", logo: "/tech-icons/grpc.png" },
         { name: "WebSocket", logo: "/tech-icons/websocket.svg" },
     ],
     platforms: [
-        { name: "AWS API Gateway", logo: "/tech-icons/aws-api-gateway.svg" },
-        { name: "Kong", logo: "/tech-icons/kong.svg" },
+        { name: "AWS API Gateway", logo: "/tech-icons/API Gateway.svg" },
+        { name: "Kong", logo: "/tech-icons/kong.png" },
         { name: "Apigee", logo: "/tech-icons/apigee.svg" },
         { name: "Postman", logo: "/tech-icons/postman.svg" },
     ],
     auth: [
         { name: "OAuth 2.0", logo: "/tech-icons/oauth.svg" },
         { name: "JWT", logo: "/tech-icons/jwt.svg" },
-        { name: "API Keys", logo: "/tech-icons/api-key.svg" },
-        { name: "OpenID Connect", logo: "/tech-icons/oidc.svg" },
+        { name: "API Keys", logo: "/tech-icons/apikey.svg" },
+        { name: "OpenID Connect", logo: "/tech-icons/openid.svg" },
     ],
 };
 
@@ -156,7 +156,7 @@ export default function APIIntegration() {
                             <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
                             <div className="relative aspect-[5/4] w-full">
                                 <Image
-                                    src="/services/api-integration.png"
+                                    src="/services/API.png"
                                     alt="API integration services"
                                     fill
                                     className="object-contain"
