@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import ElegantFormPopup from './PopupForm';
+import { useRouter } from 'next/navigation'; // Next.js 13+ App Router ke liye
 
 interface NavItem {
   label: string;
@@ -30,12 +31,7 @@ const RexGalaxyNavbar: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
-
-
-  // const handleDropdownToggle = (label: string): void => {
-  //   setActiveDropdown(activeDropdown === label ? null : label);
-  //   setSelectedCategory(null);
-  // };
+  const router = useRouter(); // Router hook initialize karo
 
   const closeDropdown = (): void => {
     setActiveDropdown(null);
@@ -55,7 +51,6 @@ const RexGalaxyNavbar: React.FC = () => {
             { label: 'Software Development', href: '/services/software-dev' },
             { label: 'Mobile App Development', href: '/services/mobile-dev' },
             { label: 'Application Modernization', href: '/services/app-modernization' },
-            // { label: 'Hire Dedicated Developers', href: '/services/hire-developers' },
             { label: 'UI/UX Services', href: '/services/ui-ux' },
             { label: 'SaaS Development', href: '/services/saas-dev' },
           ]
@@ -84,10 +79,8 @@ const RexGalaxyNavbar: React.FC = () => {
       label: 'About',
       dropdown: [
         { label: 'About Us', href: '/about/company-overview' },
-        // { label: 'Our Team', href: '/team' },
         { label: 'Company Culture', href: '/about/company-culture' },
         { label: 'Career', href: '/about/career' },
-        // { label: 'Testimonials', href: '/testimonials' },
       ]
     },
     {
@@ -101,10 +94,11 @@ const RexGalaxyNavbar: React.FC = () => {
   ];
 
   const handleLinkClick = (href: string): void => {
-    window.location.href = href;
-
+    // Next.js router use karo navigation ke liye
+    router.push(href);
     closeDropdown();
   };
+
   return (
     <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 shadow-2xl sticky top-0 z-[900] border-b border-slate-600 hidden md:block">
       <nav className="relative">
@@ -125,7 +119,6 @@ const RexGalaxyNavbar: React.FC = () => {
               </button>
             </div>
 
-            {/* Desktop Navigation */}
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item, index) => (
@@ -196,7 +189,6 @@ const RexGalaxyNavbar: React.FC = () => {
               >
                 Get Started
               </button>
-
             </div>
             <ElegantFormPopup isOpen={showForm} onClose={() => setShowForm(false)} />
           </div>
@@ -279,9 +271,7 @@ const RexGalaxyNavbar: React.FC = () => {
             </div>
           )
         ))}
-
       </nav>
-
     </div>
   );
 };

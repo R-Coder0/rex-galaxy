@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -34,12 +35,11 @@ const Footer = () => {
           {/* 1) BRAND / CONTACT / ADDRESS */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image
+            <img
                 src="/logo.png" // <- put your logo at public/logo.svg
                 alt={`${COMPANY.name} logo`}
                 width={150}
                 height={150}
-                priority
               />
             </div>
 
@@ -158,10 +158,9 @@ const Footer = () => {
             {CERTS.map((c) => (
               <div key={c.label} className="flex flex-col items-center text-center bg-white p-4 rounded-lg">
                 <div className="relative w-44 h-14">
-                  <Image
+                  <img
                     src={c.src}
                     alt={c.label}
-                    fill
                     className="object-contain"
                   />
                 </div>

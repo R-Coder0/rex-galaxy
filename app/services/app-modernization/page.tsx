@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
 import { MonitorCog, Database as DbIcon, Boxes } from "lucide-react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -155,12 +155,10 @@ export default function ApplicationModernization(){
             <div className="relative mx-auto w-full max-w-xl">
               <div className="absolute -inset-6 - rounded-3xl bg-blue-900/20 blur-3xl" />
               <div className="relative aspect-[5/4] w-full">
-                <Image
+              <img
                   src="/app-modernization.png"
                   alt="Application modernization process"
-                  fill
                   className="object-contain"
-                  priority
                 />
               </div>
             </div>
@@ -393,7 +391,6 @@ export default function ApplicationModernization(){
                   whileHover={{ y: -3 }}
                   className="bg-slate-800/60 ring-1 ring-slate-700 p-4 text-center">
                   <div className="mx-auto h-16 w-16 overflow-hidden rounded-xl bg-gray-600 flex items-center justify-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.logo}
                       alt={item.name}

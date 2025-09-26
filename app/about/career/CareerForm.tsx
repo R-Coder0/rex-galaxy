@@ -13,31 +13,30 @@ export default function CareerForm() {
     setLoading(true);
 
     try {
-      // Extract form data to avoid sending large files directly
       const formData = new FormData(formRef.current);
       const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        role: formData.get('role'),
-        linkedin: formData.get('linkedin'),
-        source: formData.get('source'),
-        message: formData.get('message'),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        role: formData.get("role"),
+        linkedin: formData.get("linkedin"),
+        source: formData.get("source"),
+        message: formData.get("message"),
         resume: (() => {
-          const resumeEntry = formData.get('resume');
+          const resumeEntry = formData.get("resume");
           return resumeEntry instanceof File && resumeEntry.name
             ? resumeEntry.name
-            : 'No file attached';
-        })()
+            : "No file attached";
+        })(),
       };
 
-      // Send data instead of form to avoid 413 error
+      // 👉 Yahan direct keys dal do
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_CAREER_TEMPLATE_ID as string,
+        "service_o6fe03w", // <-- apna SERVICE ID yahan likho
+        "template_8ejlwrp", // <-- apna TEMPLATE ID yahan likho
         data,
         {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string,
+          publicKey: "Yfsdit-4AmwEeEx0M0", // <-- apna PUBLIC KEY yahan likho
         }
       );
 
@@ -58,8 +57,14 @@ export default function CareerForm() {
       onSubmit={handleSubmit}
       className="grid gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
     >
-      {/* Honey-pot spam trap (users इसे नहीं भरेंगे) */}
-      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+      {/* Honey-pot spam trap */}
+      <input
+        type="text"
+        name="website"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+      />
 
       <div className="grid gap-4 md:grid-cols-3">
         <input
@@ -115,9 +120,6 @@ export default function CareerForm() {
           accept=".pdf,.doc,.docx"
           className="block w-full text-sm text-white/70 file:mr-4 file:rounded-lg file:border-0 file:bg-orange-500 file:px-4 file:py-2 file:font-semibold file:text-white hover:file:bg-orange-400"
         />
-        {/* <p className="mt-1 text-xs text-white/50">
-          Note: Only the filename will be sent via email. We&apos;ll contact you for the full file if needed.
-        </p> */}
       </div>
 
       <button

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // app/about/career/page.tsx  (SERVER COMPONENT)
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -15,12 +16,10 @@ export default function CareerPage() {
       {/* Hero */}
       <section className="relative py-36 text-center">
         <div className="absolute inset-0">
-          <Image
+          <img
             src="/career/hero.webp"
             alt="RexGalaxy team"
-            fill
             className="object-cover"
-            priority
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
@@ -53,13 +52,10 @@ export default function CareerPage() {
 
         {/* IMAGE SECOND ON MOBILE */}
         <div className="order-2 md:order-1 relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <Image
+         <img
             src="/career/company-cluture.webp"
             alt="Dynamic workplace at RexGalaxy"
-            fill
             className="object-contain"
-            priority={false}
-            placeholder="empty"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
         </div>
@@ -86,10 +82,9 @@ export default function CareerPage() {
           </ul>
         </div>
         <div className="relative aspect-[3/2] overflow-hidden rounded-2xl">
-          <Image
+          <img
             src="/career/WCU.png"
             alt="Our Team"
-            fill
             className="object-cover"
           />
         </div>

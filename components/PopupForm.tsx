@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
@@ -37,15 +38,13 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
     setSent(null);
 
     try {
-      const serviceId  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
-      const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
+      const serviceId  = "service_o6fe03w";     
+      const templateId = "template_6hngq3b";   
+      const publicKey  = "fsdit-4AmwEeEx0M0"; 
       if (!serviceId || !templateId || !publicKey) {
         console.error('Missing EmailJS env vars');
         throw new Error('Email service not configured');
       }
-
-      // Params MUST match your EmailJS template variable names
       const templateParams = {
         name: formData.name,
         email: formData.email,
@@ -60,10 +59,7 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
       await emailjs.send(serviceId, templateId, templateParams, { publicKey });
 
       setSent('ok');
-      // optional reset
       setFormData({ name: '', email: '', phone: '', company: '', message: '', service: '' });
-
-      // auto-close after a short delay
       setTimeout(() => {
         onClose();
         setSent(null);
@@ -83,8 +79,6 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
         className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(17,24,39,.65),rgba(2,6,23,.9))] backdrop-blur-md"
         onClick={() => !loading && onClose()}
       />
-
-      {/* Dialog */}
       <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950/90 shadow-2xl ring-1 ring-black/40">
         {/* Close */}
         <button
@@ -99,12 +93,10 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
         <div className="flex max-h-[90vh] overflow-hidden flex-col md:flex-row">
           {/* Image side */}
           <div className="relative hidden w-full md:block md:w-5/12">
-            <Image
+            <img
               src="/formImage.webp"
               alt="Contact Illustration"
-              fill
               className="object-cover"
-              priority
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/40 to-slate-950/80" />
             <div className="absolute left-4 top-4 rounded-full bg-orange-500/20 px-3 py-1 text-sm font-semibold text-orange-300 ring-1 ring-orange-400/30">
