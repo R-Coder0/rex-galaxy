@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 import ElegantFormPopup from './PopupForm';
+import { useRouter } from 'next/navigation'; // Add this import
 
 interface NavItem {
   label: string;
@@ -32,6 +33,7 @@ const RexGalaxyMobileNavbar: React.FC = () => {
   const [selectedMegaMenu, setSelectedMegaMenu] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const router = useRouter(); // Add this line
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -55,7 +57,8 @@ const RexGalaxyMobileNavbar: React.FC = () => {
   };
 
   const handleLinkClick = (href: string) => {
-    window.location.href = href;
+    // Use router.push instead of window.location.href
+    router.push(href);
     setIsOpen(false);
   };
 
@@ -72,7 +75,6 @@ const RexGalaxyMobileNavbar: React.FC = () => {
             { label: 'Software Development', href: '/services/software-dev' },
             { label: 'Mobile App Development', href: '/services/mobile-dev' },
             { label: 'Application Modernization', href: '/services/app-modernization' },
-            // { label: 'Hire Dedicated Developers', href: '/services/hire-developers' },
             { label: 'UI/UX Services', href: '/services/ui-ux' },
             { label: 'SaaS Development', href: '/services/saas-dev' },
           ]

@@ -1,9 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -96,7 +94,7 @@ export default function ElegantFormPopup({ isOpen, onClose }: Props) {
             <img
               src="/formImage.webp"
               alt="Contact Illustration"
-              className="object-cover"
+              className="object-cover h-full"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/40 to-slate-950/80" />
             <div className="absolute left-4 top-4 rounded-full bg-orange-500/20 px-3 py-1 text-sm font-semibold text-orange-300 ring-1 ring-orange-400/30">
