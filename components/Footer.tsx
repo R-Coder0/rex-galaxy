@@ -2,7 +2,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitterX, BsYoutube } from "react-icons/bs";
@@ -123,25 +122,25 @@ const Footer = () => {
           </h4>
           <div className="flex justify-center gap-6 text-2xl">
             <Link
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61582392835508&sk=about"
               className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
             >
               <FaFacebook />
             </Link>
             <Link
-              href="#"
+              href="https://x.com/rexgalaxytech"
               className="text-gray-400 hover:text-black transition-colors duration-300"
             >
               <BsTwitterX />
             </Link>
             <Link
-              href="#"
+              href="https://www.youtube.com/@CodersIndia"
               className="text-gray-400 hover:text-red-600 transition-colors duration-300"
             >
               <BsYoutube />
             </Link>
             <Link
-              href="#"
+              href="https://www.instagram.com/rexgalaxytechnology/?hl=en"
               className="text-gray-400 hover:text-pink-600 transition-colors duration-300"
             >
               <FaInstagram />
@@ -157,14 +156,13 @@ const Footer = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {CERTS.map((c) => (
               <div key={c.label} className="flex flex-col items-center text-center bg-white p-4 rounded-lg">
-                <div className="relative w-44 h-14">
+                <div className="relative w-44 h-20">
                   <img
                     src={c.src}
                     alt={c.label}
-                    className="object-contain"
+                    className="object-cover align-middle"
                   />
                 </div>
-                <div className="mt-2 text-sm text-gray-400">{c.label}</div>
               </div>
             ))}
           </div>

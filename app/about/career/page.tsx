@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 // app/about/career/page.tsx  (SERVER COMPONENT)
 import type { Metadata } from "next";
-import Image from "next/image";
 import CareerForm from "./CareerForm"; // client component
 import Link from "next/link";
 
